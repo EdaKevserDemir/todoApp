@@ -1,0 +1,66 @@
+<div class="homepage">
+  <div class="container">
+    <div class="row">
+      <div class="title col-md-12">
+        <h3><b> <img class="png" src="assets/png/todo.png"style>&ensp;TODO LIST APP</b></h3>
+      </div>
+
+     <div class="inputbox col-md-4">
+     <input type="text" class="form-control" placeholder="Yapılacak İş Ekle"  name="button-add" #newwork>
+    </div>
+     <div class="inputbtn col-md-3">
+     <button class="btn btn-outline-secondary" type="button" id="button-add" style=" width:100px"(click)="addTodo(newwork)" ><b>EKLE</b></button>
+</div>
+</div>
+<br>
+<br>
+
+  <div class="col-md-12">
+
+<div class="example-container col-md-4">
+  <h2>To do</h2>
+
+  <div
+    cdkDropList
+    #todoList="cdkDropList"
+    [cdkDropListData]="todo"
+    [cdkDropListConnectedTo]="[startedList]"
+    class="example-list"
+    (cdkDropListDropped)="drop($event)">
+    <div class="example-box" *ngFor="let item of todo" cdkDrag><img class="pngs"src="assets/png/clock.png">&nbsp;&nbsp;{{item}}</div>
+  </div>
+</div>
+
+<div class="example-container col-md-4">
+  <h2>Started</h2>
+
+  <div
+    cdkDropList
+    #startedList="cdkDropList"
+    [cdkDropListData]="started"
+    [cdkDropListConnectedTo]="[doneList,todoList]"
+    class="example-list"
+    (cdkDropListDropped)="drop($event)">
+    <div class="example-box" *ngFor="let item of started" cdkDrag><img class="pngs"src="assets/png/hourglass.png">&nbsp;&nbsp;{{item}}</div>
+  </div>
+</div>
+
+<div class="example-container col-md-4">
+  <h2>Done</h2>
+
+  <div
+    cdkDropList
+    #doneList="cdkDropList"
+    [cdkDropListData]="done"
+    [cdkDropListConnectedTo]="[startedList]"
+    class="example-list"
+    (cdkDropListDropped)="drop($event)">
+    <div class="example-box" *ngFor="let item of done" cdkDrag><img class="pngs"src="assets/png/like.png">&nbsp;&nbsp;{{item}}</div>
+  </div>
+</div>
+
+
+</div>
+</div>
+</div>
+
